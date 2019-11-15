@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # hakaton3
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# hakaton3_front
+>>>>>>> 4f1ef39a13a53be8388b548042b74620ad9c0440
