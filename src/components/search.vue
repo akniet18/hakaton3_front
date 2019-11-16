@@ -1,29 +1,21 @@
 <template>
   <div class="wrapper">
-    <div class="bt">
-        <article>
-            <div class="search_input">
-                <el-input
-                    placeholder="Type something"
-                    prefix-icon="el-icon-search"
-                    v-model="input2">
-                </el-input>
+    <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+              <h1 class="display-4 text-white mt-5 mb-2 text-center">Business Name or Tagline</h1>
+              <div class="form-group has-search">
+                <i class="el-icon-search form-control-feedback"></i>
+                <input type="text" class="form-control" placeholder="Search"
+                        v-on:keyup.enter="search_user" v-model="search">
+              </div>
             </div>
-        </article>
-    </div>
+          </div>
+        </div>
+    </header>
     
-    <div class="articles">
-        <el-row :gutter="24">
-          <el-col :span="6" v-for="d in data" v-bind:key="d.id">
-            <router-link tag="div" style="cursor:pointer" :to="{name: 'user', params: {id: d.id}}">
-                <div class="bc">
-                  <div class="avatar"><img :src="d.avatar" alt="avatar"></div>
-                  <div>{{d.last_name}} {{d.first_name}}</div>
-                </div>
-            </router-link>
-          </el-col>
-        </el-row>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -31,50 +23,32 @@
 export default {
     data(){
         return{
-            data: [
-                {'id': 1,'avatar': 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/08/19/08/amber-heard.jpg?w968h681', 'first_name': 'Amber', 'last_name': 'Heaerd'},
-                {'id': 2,'avatar': 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/08/19/08/amber-heard.jpg?w968h681', 'first_name': 'Amber', 'last_name': 'Heaerd'},
-                {'id': 3,'avatar': 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/08/19/08/amber-heard.jpg?w968h681', 'first_name': 'Amber', 'last_name': 'Heaerd'},
-                {'id': 4,'avatar': 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/08/19/08/amber-heard.jpg?w968h681', 'first_name': 'Amber', 'last_name': 'Heaerd'},
-                {'id': 5,'avatar': 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/08/19/08/amber-heard.jpg?w968h681', 'first_name': 'Amber', 'last_name': 'Heaerd'},
-            ]
+            search: '',
+        }
+    },
+    methods: {
+        search_user() {
+            this.$router.push({name: 'list', params: {search_s: this.search}})
         }
     }
 };
 </script>
 
 <style scoped>
-article{
-    width: 85%;
-    margin: auto;
-    margin-top: 5%;
+
+.has-search .form-control {
+    padding-left: 2.375rem;
 }
-.bt{
-    padding: 10px 0 30px 0;
-    border-bottom: 1px solid #FC9C40;
-}
-.search_input{
-   width: 80%;
-   margin: auto;
-   padding-top: 20px 0;
-}
-.bc{
-    background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 32%);
-    margin-bottom: 20px;
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
     text-align: center;
-    padding: 20px 0;
-    border-radius: 15px;
-    box-shadow: 0 0 5px 1px rgba(0,0,0,.5)
-}
-.articles{
-    padding: 20px 0;
-    width: 90%;
-    margin: auto;
-}
-.avatar img{
-    border-radius: 100%;
-    width: 5em;
-    height: 5em;
+    pointer-events: none;
+    color: #aaa;
 }
 </style>

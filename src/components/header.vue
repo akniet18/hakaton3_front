@@ -1,36 +1,41 @@
 <template>
   <div class="wrapper">
-    <header>
-    	<div><router-link tag="el-link" :to="{name: 'home'}">Title</router-link></div>
-    	<div>
-    		<el-button type="success" icon="el-icon-circle-plus-outline" plain>Добавить отзыв</el-button>
-    		<el-button type="primary" icon="el-icon-user-solid">Sign in</el-button>
-    	</div>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <router-link tag="a" class="navbar-brand" :to="{name: 'home'}">
+            ABC
+          </router-link>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+<!--               <li class="nav-item">
+                <router-link tag="a" class="nav-item" :to="{name: 'login'}" v-if="token !== 'undefined'">Добавить отзыв</router-link>
+                <router-link tag="a" class="nav-item" :to="{name: 'login'}" v-if="token !== 'undefined'">Добавить отзыв</router-link>
+              </li> -->
+            
+              <li class="nav-item" v-if="token !== 'undefined'">{{username}} {{token}}</li>
+              <li class="nav-item" v-else>
+                <router-link tag="el-button" :to="{name: 'login'}">Sign in</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
   </div>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return {
+      username: localStorage.getItem('username'),
+      token: localStorage.getItem('token')
+    }
+  }
 };
 </script>
 
 <style scoped>
-.wrapper{
-	background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 32%);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px;
-}
-header{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 85%;
-	margin: auto;
-}
 </style>

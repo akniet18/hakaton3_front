@@ -15,8 +15,24 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'home',
-        component: lazyLoading('search')
+        component: lazyLoading('search'),
+        children: [
+          {
+            path: '',
+            name: 'home',
+            component: lazyLoading('institutes')
+          },
+          {
+            path: ':id',
+            name: 'institut',
+            component: lazyLoading('institut')
+          },
+          {
+            path: 'search/:search_s',
+            name: 'list',
+            component: lazyLoading('list')
+          }
+        ]
       },
       {
         path: '/user/:id',
