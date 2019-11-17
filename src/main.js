@@ -13,7 +13,9 @@ Vue.use(StarRating)
 Vue.use(VueResource)
 Vue.use(ElementUI, { lang })
 
-Vue.http.options.root = 'http://localhost:8000/';
+Vue.http.options.root = 'http://hakaton3.herokuapp.com/';
+
+// Vue.http.options.root = 'http://localhost:8000/';
 Vue.config.productionTip = false
 
 new Vue({

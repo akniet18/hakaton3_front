@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
     <HeaderApp></HeaderApp>
+    <!-- <SearchApp v-if="route !== 'user'"></SearchApp> -->
+    
     <router-view></router-view>
     <FooterApp></FooterApp>
   </div>
@@ -9,10 +11,20 @@
 <script>
 import HeaderApp from './header'
 import FooterApp from './footer'
+import SearchApp from './search'
 export default {
   components: {
     HeaderApp,
-    FooterApp
+    FooterApp,
+    SearchApp
+  },
+  data() {
+  	return {
+  		route: this.$route.name
+  	}
+  },
+  created() {
+  	console.log(this.route)
   }
 };
 </script>

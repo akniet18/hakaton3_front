@@ -141,6 +141,7 @@
 <script>
 import StarRating from 'vue-star-rating'
 import moment from 'moment'
+
 export default {
   components: {
 	StarRating

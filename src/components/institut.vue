@@ -5,7 +5,7 @@
         <div class="col-xl-3 col-md-4 mb-4" v-for="d in data">
         	<router-link tag="div" :to="{name: 'user', params: {id: d.id}}">
 	          <div class="card border-0 shadow">
-	            <img :src="'http://localhost:8000' + d.avatar" class="img-thumbnail img mt-3" style="width:200px; height:200px; margin-left: auto;margin-right: auto" alt="...">
+	            <img :src="d.avatar" class="img-thumbnail img mt-3" style="width:200px; height:200px; margin-left: auto;margin-right: auto" alt="...">
 	            <div class="card-body text-center">
 	              <h5 class="card-title mb-0">{{d.last_name}} {{d.first_name}}</h5>
 	              <div class="card-text text-black-50">{{d.job}}</div>
